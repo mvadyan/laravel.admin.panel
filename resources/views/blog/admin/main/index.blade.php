@@ -1,18 +1,11 @@
-@extends('layouts.app')
+@extends('layouts.app_admin')
 
 @section('content')
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="coi-md-8">
-                <div class="card">
-                    <div class="card-header">Dashboard Disabled</div>
-                    <div class="card-body">
-
-                        ADMIN
-
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    <section class="content-header">
+        @component('blog.admin.components.breadcrumbs')
+            @slot('title') Панель Управления @endslot
+            @slot('parent') Главная @endslot
+            @slot('active') @endslot
+        @endcomponent
+    </section>
 @endsection

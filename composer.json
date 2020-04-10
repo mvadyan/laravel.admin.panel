@@ -10,6 +10,7 @@
     "require": {
         "php": "^7.2.5",
         "fideloper/proxy": "^4.2",
+        "fomvasss/laravel-meta-tags": "^3.2",
         "fruitcake/laravel-cors": "^1.0",
         "guzzlehttp/guzzle": "^6.3",
         "laravel/framework": "^7.0",
@@ -67,9 +68,7 @@
             "@php artisan key:generate --ansi"
         ],
         "post-update-cmd": [
-            "Illuminate\\Foundation\\ComposerScripts::postUpdate",
-            "php artisan ide-helper:generate",
-            "php artisan ide-helper:meta"
+            "Illuminate\\Foundation\\ComposerScripts::postUpdate"
         ]
     }
 }

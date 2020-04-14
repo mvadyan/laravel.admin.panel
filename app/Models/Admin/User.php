@@ -36,5 +36,13 @@ class User extends Model
         return $this->belongsToMany('App\Models\Role', 'user_roles');
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function orders()
+    {
+        return $this->hasMany('App\Models\Admin\Order', 'user_id', 'id');
+    }
+
 
 }

@@ -3,9 +3,8 @@
 
 namespace App\Repositories\Admin;
 
-
 use App\Repositories\CoreRepository;
-use App\Models\Admin\Order as Model;
+use App\Decorators\Admin\OrderDecorator as Model;
 
 /**
  * Class OrderRepository
@@ -31,6 +30,15 @@ class OrderRepository extends CoreRepository
     }
 
     /**
+     * @param $id
+     * @return mixed
+     */
+    public function getId($id)
+    {
+        return $this->getConditions()::withTrashed()->findOrFail($id);
+    }
+
+    /**
      * @param int $perPage
      * @return mixed
      */
@@ -39,9 +47,22 @@ class OrderRepository extends CoreRepository
         return $this->getConditions()::withTrashed()
             ->has('user')
             ->with('user')
-            ->orderBy('status')
             ->orderBy('id')
             ->paginate($perPage);
+    }
+
+    /**
+     * @param int $order_id
+     * @return mixed
+     */
+    public function getOneOrder(int $order_id)
+    {
+        return $this->getConditions()::withTrashed()
+            ->has('user')
+            ->has('orderProducts')
+            ->with(['user', 'orderProducts'])
+            ->withCount('orderProducts')
+            ->findOrFail($order_id);
     }
 
 }

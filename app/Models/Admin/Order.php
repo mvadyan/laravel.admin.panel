@@ -9,6 +9,12 @@ class Order extends Model
 {
     use SoftDeletes;
 
+    const ORDER_STATUS_NEW = 'Новый';
+    const ORDER_STATUS_COMPLETED = 'Обработан';
+    const ORDER_STATUS_DELETED = 'Удален';
+
+    protected $table = 'orders';
+
     protected $fillable = [
         'id',
         'user_id',
@@ -34,13 +40,5 @@ class Order extends Model
     public function user()
     {
         return $this->belongsTo('App\Models\Admin\User');
-    }
-
-    /**
-     * @return int|mixed
-     */
-    public function getTotalSumAttribute()
-    {
-      return $this->orderProducts()->sum('price') ?? 0;
     }
 }

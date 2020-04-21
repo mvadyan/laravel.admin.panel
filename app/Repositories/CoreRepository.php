@@ -41,7 +41,7 @@ abstract class CoreRepository
      */
     public function getId($id)
     {
-        return $this->getConditions()->find($id);
+        return $this->getConditions()->findOrFail($id);
     }
 
     /**

@@ -40,6 +40,14 @@ Route::group(['middleware' => ['status', 'auth']], function () {
             ->name('blog.admin.orders.save');
         Route::get('/orders/forceDestroy/{id}', 'OrderController@forceDestroy')
             ->name('blog.admin.orders.forceDestroy');
+
+        Route::get('/categories/myDel', 'CategoryController@myDel')
+            ->name('blog.admin.categories.myDel');
+        Route::resource('/categories', 'CategoryController')
+            ->names('blog.admin.categories');
+
+
+
     });
 });
 

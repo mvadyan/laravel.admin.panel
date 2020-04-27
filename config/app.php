@@ -175,6 +175,9 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+        /*My providers*/
+        Lavary\Menu\ServiceProvider::class,
+
     ],
 
     /*
@@ -228,6 +231,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
 
         'MetaTag' => Fomvasss\LaravelMetaTags\Facade::class,
+        'Menu' => Lavery\Menu\Facade::class,
 
     ],
 

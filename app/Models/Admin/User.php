@@ -41,7 +41,7 @@ class User extends Model
      */
     public function orders()
     {
-        return $this->hasMany('App\Models\Admin\Order', 'user_id', 'id');
+        return $this->hasMany('App\Decorators\Admin\OrderDecorator', 'user_id', 'id');
     }
 
 

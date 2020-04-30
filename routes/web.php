@@ -46,6 +46,9 @@ Route::group(['middleware' => ['status', 'auth']], function () {
         Route::resource('/categories', 'CategoryController')
             ->names('blog.admin.categories');
 
+        Route::resource('users', 'UserController')
+            ->names('blog.admin.users');
+
 
 
     });

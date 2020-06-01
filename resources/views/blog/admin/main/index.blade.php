@@ -32,7 +32,7 @@
                     <div class="icon">
                         <i class="ion ion-stats-bars"></i>
                     </div>
-                    <a href="" class="small-box-footer">More info <i class="fa fa-arrow-circle-o-right"></i></a>
+                    <a href="{{route('blog.admin.products.index')}}" class="small-box-footer">More info <i class="fa fa-arrow-circle-o-right"></i></a>
                 </div>
             </div>
             <div class="col-lg-3 col-xs-6">

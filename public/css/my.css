@@ -44,3 +44,8 @@
     color: #fff;
 }
 
+/**Спиннер для загрузки галереи */
+.overlay {
+    display: none;
+}
+

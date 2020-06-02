@@ -4009,7 +4009,7 @@ S2.define('select2/dropdown/hidePlaceholder',[
   }
 
   HidePlaceholder.prototype.append = function (decorated, data) {
-    data.results = this.removePlaceholder(data.results);
+    data.results = this.removePlaceholder(data.result);
 
     decorated.call(this, data);
   };

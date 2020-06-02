@@ -1,45 +1,71 @@
 <?php
 
-    use App\Patterns\Fundamental\BlogContainer;
+use App\Patterns\Fundamental\BlogContainer;
 
 
-    /** This file is part of KCFinder project
-  *
-  *      @desc Base configuration file
-  *   @package KCFinder
-  *   @version 3.12
-  *    @author Pavel Tzonkov <sunhater@sunhater.com>
-  * @copyright 2010-2014 KCFinder Project
-  *   @license http://opensource.org/licenses/GPL-3.0 GPLv3
-  *   @license http://opensource.org/licenses/LGPL-3.0 LGPLv3
-  *      @link http://kcfinder.sunhater.com
-  */
+/** This file is part of KCFinder project
+ *
+ * @desc Base configuration file
+ * @package KCFinder
+ * @version 3.12
+ * @author Pavel Tzonkov <sunhater@sunhater.com>
+ * @copyright 2010-2014 KCFinder Project
+ * @license http://opensource.org/licenses/GPL-3.0 GPLv3
+ * @license http://opensource.org/licenses/LGPL-3.0 LGPLv3
+ * @link http://kcfinder.sunhater.com
+ */
 
 /* IMPORTANT!!! Do not comment or remove uncommented settings in this file
    even if you are using session configuration.
    See http://kcfinder.sunhater.com/install for setting descriptions */
 
-    require __DIR__ . '/../../../../../vendor/autoload.php';
+require __DIR__ . '/../../../../../vendor/autoload.php';
+//require '../../../../bootstrap/autoload.php';
+$app = require '../../../../bootstrap/app.php';
+$app->make('Illuminate\Contracts\Http\Kernel')->handle(Illuminate\Http\Request::capture());
+$isAuthorized = Auth::check();
+
+if ($isAuthorized) {
+    session_start();
+    $isAdmin = Auth::user()->isAdministrator();
+
+    if ($isAdmin) {
+        $_SESSION['KCFINDER'] = array();
+        $_SESSION['KCFINDER']['disabled'] = false;
+    } else {
+        if (isset($_SESSION['KCFINDER'])) {
+            unset($_SESSION['KCFINDER']);
+        }
+    }
+
+} else {
+    if (isset($_SESSION['KCFINDER'])) {
+        unset($_SESSION['KCFINDER']);
+    }
+}
 
 
-    $_CONFIG = array(
+$_CONFIG = array(
 
-    'disabled' => false,
+
+// GENERAL SETTINGS
+
+    'disabled' => true,
     'uploadURL' => "../../../images",
     'uploadDir' => "",
     'theme' => "default",
 
     'types' => array(
 
-    // (F)CKEditor types
-        'files'   =>  "",
-        'flash'   =>  "swf",
-        'images'  =>  "*img",
+        // (F)CKEditor types
+        'files' => "",
+        'flash' => "swf",
+        'images' => "*img",
 
-    // TinyMCE types
-        'file'    =>  "",
-        'media'   =>  "swf flv avi mpg mpeg qt mov wmv asf rm",
-        'image'   =>  "*img",
+        // TinyMCE types
+        'file' => "",
+        'media' => "swf flv avi mpg mpeg qt mov wmv asf rm",
+        'image' => "*img",
     ),
 
 
@@ -75,8 +101,8 @@
         'files' => array(
             'upload' => true,
             'delete' => true,
-            'copy'   => true,
-            'move'   => true,
+            'copy' => true,
+            'move' => true,
             'rename' => true
         ),
 

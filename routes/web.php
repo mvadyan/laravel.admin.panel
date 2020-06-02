@@ -33,9 +33,9 @@ Route::group(['middleware' => ['status', 'auth']], function () {
             ->names('blog.admin.index');
 
         Route::resource('orders', 'OrderController')
-        ->names('blog.admin.orders');
+            ->names('blog.admin.orders');
         Route::get('/orders/change/{id}', 'OrderController@change')
-        ->name('blog.admin.orders.change');
+            ->name('blog.admin.orders.change');
         Route::get('/orders/save/{id}', 'OrderController@save')
             ->name('blog.admin.orders.save');
         Route::get('/orders/forceDestroy/{id}', 'OrderController@forceDestroy')
@@ -49,7 +49,25 @@ Route::group(['middleware' => ['status', 'auth']], function () {
         Route::resource('users', 'UserController')
             ->names('blog.admin.users');
 
+        Route::get('/products/related', 'ProductController@related');
 
+        Route::match(['get', 'post'], '/products/ajax-image-upload', 'ProductController@ajaxImage');
+        Route::delete('/products/ajax-remove-image/{filename}', 'ProductController@deleteImage');
+
+        Route::post('/products/gallery', 'ProductController@gallery')
+            ->name('blog.admin.products.gallery');
+        Route::post('/products/delete-gallery', 'ProductController@deleteGallery')
+            ->name('blog.admin.products.deleteGallery');
+
+        Route::get('products/return-status/{id}', 'ProductController@returnStatus')
+            ->name('blog.admin.products.returnStatus');
+        Route::get('products/delete-status/{id}', 'ProductController@deleteStatus')
+            ->name('blog.admin.products.deleteStatus');
+        Route::get('products/delete-product/{id}', 'ProductController@deleteProduct')
+            ->name('blog.admin.products.deleteProduct');
+
+        Route::resource('products', 'ProductController')
+            ->names('blog.admin.products');
 
     });
 });

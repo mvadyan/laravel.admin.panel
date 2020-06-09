@@ -158,8 +158,8 @@
 </span>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a href="#">Список валют</a></li>
-                        <li><a href="#">Добавить валюту</a></li>
+                        <li><a href="{{url('admin/currency/index')}}">Список валют</a></li>
+                        <li><a href="{{url('admin/currency/add')}}">Добавить валюту</a></li>
                     </ul>
                 </li>
                 <li class="treeview">
@@ -206,7 +206,7 @@
         <div class="pull-right hidden-xs">
             <b>Version</b> 3.0
         </div>
-        <strong>Copyright &copy; 2019  All rights reserved.</strong>
+        <strong>Copyright &copy; 2020  All rights reserved.</strong>
     </footer>
 
     <div class="control-sidebar-bg"></div>

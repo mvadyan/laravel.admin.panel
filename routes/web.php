@@ -70,12 +70,16 @@ Route::group(['middleware' => ['status', 'auth']], function () {
         Route::match(['get','post'], '/filter/group-add-group', 'FilterController@groupAdd');
         Route::match(['get','post'], '/filter/group-edit/{id}', 'FilterController@groupEdit');
         Route::get('/filter/group-delete/{id}', 'FilterController@groupDelete');
-
         Route::get('filter/attributes-filter', 'FilterController@attributeFilter');
-
         Route::match(['get','post'], '/filter/attrs-add', 'FilterController@attributeAdd');
         Route::match(['get','post'], '/filter/attr-edit/{id}', 'FilterController@attrEdit');
         Route::get('/filter/attr-delete/{id}', 'FilterController@attrDelete');
+
+        Route::get('/currency/index', 'CurrencyController@index');
+        Route::match(['get','post'], '/currency/add', 'CurrencyController@addCurrency');
+        Route::match(['get','post'], '/currency/edit/{id}', 'CurrencyController@editCurrency');
+        Route::get('/currency/delete/{id}', 'CurrencyController@deleteCurrency');
+
 
         Route::resource('products', 'ProductController')
             ->names('blog.admin.products');

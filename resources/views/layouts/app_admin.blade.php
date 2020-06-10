@@ -225,18 +225,6 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/4.0.2/bootstrap3-typeahead.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/4.0.2/bootstrap3-typeahead.min.js"></script>
 
-<script type="javascript">
-    var route = "{{url('/admin/autocomplete')}}";
-    console.log(312341243);
-    $('#search').typeahead({
-        source: function (term, process) {
-            return $.get(route, {term: term}, function (data) {
-                return process(data);
-            });
-        }
-    });
-</script>
-
 <script>
     var pathd = '{{PATH}}';
 </script>
@@ -261,6 +249,7 @@
 <script src="{{asset('js/main.js')}}"></script>
 <!-- === = ===  -->
 
+@include('blog.admin.search.include.script_search_typeahead')
 @include('blog.admin.product.include.script_img')
 @include('blog.admin.product.include.script_gallery')
 @include('blog.admin.product.include.script_related_prod')

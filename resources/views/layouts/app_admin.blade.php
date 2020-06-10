@@ -4,9 +4,9 @@
     <meta charset="utf-8">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <link rel="shortcut icon" href="#" type="image/png" />
+    <link rel="shortcut icon" href="#" type="image/png"/>
     <title>{!! MetaTag::tag('title') !!}</title>
-	<!-- Tell the browser to be responsive to screen width -->
+    <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.7 -->
     <link rel="stylesheet" href="{{asset('adminlte/bower_components/bootstrap/dist/css/bootstrap.min.css')}}">
@@ -25,13 +25,14 @@
     <link rel="stylesheet" href="{{asset('css/my.css')}}">
 
     <!-- Google Font -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 
-<style>
-    .wrapper{
-        overflow:hidden;
-    }
-</style>
+    <style>
+        .wrapper {
+            overflow: hidden;
+        }
+    </style>
 
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
@@ -57,13 +58,15 @@
 
                     <li class="dropdown user user-menu">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                            <img src="{{asset('adminlte/dist/img/user2-160x160.jpg')}}" class="user-image" alt="User Image">
+                            <img src="{{asset('adminlte/dist/img/user2-160x160.jpg')}}" class="user-image"
+                                 alt="User Image">
                             <span class="hidden-xs">{{ucfirst (Auth::user()->name) }} </span>
                         </a>
                         <ul class="dropdown-menu">
                             <!-- User image -->
                             <li class="user-header">
-                                <img src="{{asset('adminlte/dist/img/user2-160x160.jpg')}}" class="img-circle" alt="User Image">
+                                <img src="{{asset('adminlte/dist/img/user2-160x160.jpg')}}" class="img-circle"
+                                     alt="User Image">
                                 <p>
                                     {{ ucfirst(Auth::user()->name) }}
                                 </p>
@@ -72,13 +75,15 @@
                             <!-- Menu Footer-->
                             <li class="user-footer">
                                 <div class="pull-left">
-                                    <a href="{{route('blog.admin.users.edit', Auth::user()->id)}}" class="btn btn-default btn-flat">Профиль</a>
+                                    <a href="{{route('blog.admin.users.edit', Auth::user()->id)}}"
+                                       class="btn btn-default btn-flat">Профиль</a>
                                 </div>
                                 <div class="pull-right">
                                     <a href="{{ route('logout') }}" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();"
                                        class="btn btn-default btn-flat">Выход</a>
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                          style="display: none;">
                                         {{ csrf_field() }}
                                     </form>
 
@@ -112,9 +117,10 @@
                 <li class="header">Меню</li>
                 <!-- Optionally, you can add icons to the links -->
                 <li><a href="/"><i class="fa fa-home"></i> <span>В магазин</span></a></li>
-                <li><a href="{{route('blog.admin.index.index')}}"><i class="fa fa-user"></i> <span>Главная админки</span></a></li>
-                <li><a href="{{route('blog.admin.orders.index')}}"><i class="fa fa-shopping-cart"></i> <span>Заказы</span></a></li>
-
+                <li><a href="{{route('blog.admin.index.index')}}"><i class="fa fa-user"></i>
+                        <span>Главная админки</span></a></li>
+                <li><a href="{{route('blog.admin.orders.index')}}"><i class="fa fa-shopping-cart"></i>
+                        <span>Заказы</span></a></li>
 
 
                 <li class="treeview">
@@ -177,15 +183,16 @@
 
             <!-- search form -->
 
-            <form action="" method="get" autocomplete="off"  style="position: absolute;">
+            <form action="{{url('/admin/search/result')}}" method="get" autocomplete="off" style="position: absolute;">
                 <div class="input-group">
-                    <input id="search" name="search" type="text" class="form-control" placeholder="Живой поиск...." style="color: whitesmoke; background-color:#20262a; border: none;">
+                    <input id="search" name="search" type="text" class="form-control" placeholder="Живой поиск...."
+                           style="color: whitesmoke; background-color:#20262a; border: none;">
                     <span class="input-group-btn">
-                        <button type="submit" value="" class="btn btn-flat" style="background-color: #ebeff4;"><i class="fa fa-search"></i></button>
+                        <button type="submit" value="" class="btn btn-flat" style="background-color: #ebeff4;"><i
+                                class="fa fa-search"></i></button>
                     </span>
                 </div>
             </form>
-
 
 
             <!-- /.search form -->
@@ -206,7 +213,7 @@
         <div class="pull-right hidden-xs">
             <b>Version</b> 3.0
         </div>
-        <strong>Copyright &copy; 2020  All rights reserved.</strong>
+        <strong>Copyright &copy; 2020 All rights reserved.</strong>
     </footer>
 
     <div class="control-sidebar-bg"></div>
@@ -214,8 +221,9 @@
 <!-- ./wrapper -->
 
 
-
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/4.0.2/bootstrap3-typeahead.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/4.0.2/bootstrap3-typeahead.min.js"></script>
 
 <script>
     var pathd = '{{PATH}}';
@@ -237,9 +245,11 @@
 <script src="{{asset('adminlte/bower_components/ckeditor/adapters/jquery.js')}}"></script>
 <script src="{{asset('adminlte/bower_components/select2/dist/js/select2.full.js')}}"></script>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/4.0.2/bootstrap3-typeahead.min.js"></script>
 <script src="{{asset('js/main.js')}}"></script>
 <!-- === = ===  -->
 
+@include('blog.admin.search.include.script_search_typeahead')
 @include('blog.admin.product.include.script_img')
 @include('blog.admin.product.include.script_gallery')
 @include('blog.admin.product.include.script_related_prod')

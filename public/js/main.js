@@ -47,3 +47,14 @@ $('#add').on('submit', function () {
 function isNumber(n) {
     return !isNaN(parseFloat(n)) && isFinite(n);
 }
+
+
+var route = '/admin/autocomplete';
+
+$('#search').typeahead({
+    source: function (term, process) {
+        return $.get(route, {term: term}, function (data) {
+            return process(data);
+        });
+    }
+});

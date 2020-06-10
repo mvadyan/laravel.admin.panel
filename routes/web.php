@@ -80,6 +80,9 @@ Route::group(['middleware' => ['status', 'auth']], function () {
         Route::match(['get','post'], '/currency/edit/{id}', 'CurrencyController@editCurrency');
         Route::get('/currency/delete/{id}', 'CurrencyController@deleteCurrency');
 
+        Route::get('/search/result', 'SearchController@index');
+        Route::get('/autocomplete', 'SearchController@search');
+
 
         Route::resource('products', 'ProductController')
             ->names('blog.admin.products');
